@@ -4,7 +4,9 @@
  * and open the template in the editor.
  */
 package Frontera;
-
+import java.util.ArrayList;
+import Entidad.Usuario;
+import Entidad.Sistema;
 /**
  *
  * @author ZERAX
@@ -13,11 +15,16 @@ public class FramePrincipal extends javax.swing.JFrame {
 
     private Registro registro = new Registro();
     private Ingreso ingreso = new Ingreso();
+    
+    public static Sistema sistema = new Sistema();
+    
+  
     /**
      * Creates new form FramePrincipal
      */
     public FramePrincipal() {
         initComponents();
+        inicializacion();
     }
 
     /**
@@ -71,7 +78,7 @@ public class FramePrincipal extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(140, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -88,10 +95,11 @@ public class FramePrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(panelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 359, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -99,8 +107,8 @@ public class FramePrincipal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addComponent(panelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -155,6 +163,39 @@ public class FramePrincipal extends javax.swing.JFrame {
                 new FramePrincipal().setVisible(true);
             }
         });
+    }
+    
+    public void inicializacion(){
+        
+        ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
+        
+        Usuario a = new Usuario();  //Declarar objetos de top Usuario
+        Usuario b = new Usuario(); 
+        Usuario c = new Usuario(); 
+        
+        
+        a.setNombre("Juan");        //Agregar atributos de a
+        a.setPassword("1234");
+        b.setNombre("Pedro");
+        b.setPassword("123");
+        c.setNombre("Maria");
+        c.setPassword("12345");
+        
+        usuarios.add(a);    //Agregar al array List
+        usuarios.add(b);
+        usuarios.add(c);
+        
+        
+        sistema.setUsuarios(usuarios); //Se le està pasando el arraylist
+        
+        //System.out.println("-----" + usuarios);
+        
+        for (Usuario u: sistema.getUsuarios()){ //Lee lo que tenga el arrayList
+            System.out.println(u.getNombre());
+            System.out.println(u.getPassword());
+            System.out.println("---------");
+        }
+     
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
