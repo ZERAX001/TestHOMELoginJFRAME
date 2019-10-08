@@ -29,7 +29,7 @@ public class ValidarLogin {
         for(Usuario u: sistema.getUsuarios()){
             if(u.getNombre().equals(usuario.getNombre()) &&
                u.getPassword().equals(usuario.getPassword())){
-               return ("Bienvenido!!");
+               return ("Bienvenido");
             }
         }
         return ("Datos incorrectos");
